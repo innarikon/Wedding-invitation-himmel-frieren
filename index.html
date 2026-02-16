@@ -71,7 +71,7 @@ body::before {
 .page.flipped {
   transform: translateX(120%) rotate(5deg);
   opacity: 0;
-  transition: transform 0.8s ease, opacity 0.6s ease;
+  ponter-events: none;
 }
 
 .jp {
@@ -190,19 +190,7 @@ let resetBtn = document.getElementById("resetBtn");
 
 function nextPage(){
   if(current < pages.length){
-    
-    let page = pages [current]
-
-    page.classList.add("flipped");
-
-    // setelah animasi selesai, pindahkan ke belakang
-    setTimeout(() => {
-      page.style.zIndex = 0;
-      page.style.opacity = 1;
-      page.style.transform = "none";
-      document.querySelector(".book").appendChild(page);
-    }, 800);
-    
+    pages[current].classList.add("flipped");
     current++;
   }
 
@@ -212,7 +200,11 @@ function nextPage(){
 }
 
 resetBtn.addEventListener("click", function(){
-  location.reload(); //reset paling bersih & stabil
+  pages.forEach(page => {
+    page.classList.remove("flipped");
+  });
+  current = 0;
+  resetBtn.style.display = "none";
 });
 </script> 
   
