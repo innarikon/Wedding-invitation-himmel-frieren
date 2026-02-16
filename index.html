@@ -181,13 +181,13 @@ function nextPage(){
     current++;
   }
 
-  if(curreny === pages.length){
+  if(current === pages.length){
     resetBtn.style.display = "block";
   }
 }
 
 resetBtn.addEventListener("click", function(){
-  pages.dorEach(page => page.classList.remove(flipped"));
+  pages.forEach(page => page.classList.remove("flipped"));
   current = 0;
   resetBtn.style.display = "none";
 });
