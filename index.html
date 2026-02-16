@@ -83,6 +83,24 @@ h1 {
   text-align: right;
   font-style: italic;
 }
+
+#resetBtn {
+  position: absolute;
+  bottom: 30px;
+  padding: 10px 20px;
+  background: #f5efe6;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Noto Serif JP', serif;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: none;
+}
+
+#resetBtn:hover {
+  background: #e8dfd2;
+}
+  
 </style>
 </head>
 <body>
@@ -150,16 +168,29 @@ h1 {
   </div>
 </div>
 
+<button id="resetBtn">Kembali ke Awal</button>
+  
 <script>
 let pages = document.querySelectorAll(".page");
 let current = 0;
+let resetBtn = document.getElementById("resetBtn");
 
 function nextPage(){
   if(current < pages.length){
     pages[current].classList.add("flipped");
     current++;
   }
+
+  if(curreny === pages.length){
+    resetBtn.style.display = "block";
+  }
 }
+
+resetBtn.addEventListener("click", function(){
+  pages.dorEach(page => page.classList.remove(flipped"));
+  current = 0;
+  resetBtn.style.display = "none";
+});
 </script> 
   
 </body>
