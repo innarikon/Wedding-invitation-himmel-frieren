@@ -3,63 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="vieport" content="width=device-width, initial-scale=1.0">
-<title>永遠の約束 | Wedding Invitation</title>
+<title>永遠の約束</title>
 
 <link href=""https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Noto+Serif+JP:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: 'Noto Serif JP', serif;
+  margin: 0;
   background: linear-gradient(to bottom, #0f1c2e, #1a2d4a);
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  height: 100vh;
-}
-
-/* Each Slide */
-.slide {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  scroll-snap-align: start;
-  padding: 40px;
+  height: 100vh;
+  font-family: 'Noto Serif JP', serif;
+  overflow: hidden;
 }
 
-/* Letter Paper */
-.letter {
-  background: #f5efe6;
-  width: 80%;
-  max-width: 700px;
-  padding: 60px;
-  border-radius: 6px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  color: #2c2c2c;
-  line-height: 2;
-  animation: fadeIn 1.8s ease;
+.book {
   position: relative;
+  width: 90%;
+  max-width: 720px;
+  height: 520px;
+  perspective: 2000px;
 }
 
-/* Subtle paper texture effect */
-.letter::before {
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f5efe6;
+  padding: 60px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  transform-origin: left;
+  transition: transform 1s ease;
+  backface-visibility: hidden;
+  cursor: pointer;
+  line-height: 2;
+}
+
+.page:before {
   content: "";
   position: absolute;
   inset: 0;
   background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
   opacity: 0.2;
-  border-radius: 6px;
+  border-radius: 8px;
   pointer-events: none;
+}
+
+.page.flipped {
+  transform: rotatey(-180deg);
+}
+
+.jp {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.id {
+  font-size: 14px;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 25px;
 }
 
 h1 {
   text-align: center;
-  font-weight: 500;
   margin-bottom: 30px;
 }
 
@@ -68,52 +79,84 @@ h1 {
   text-align: right;
   font-style: italic;
 }
-
-@keyfrems fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
 </style>
 </head>
- 
 <body>
 
-<!-- slide 1 -->
-<section class="slide">
-  <div class="letter">
-     <h1>永遠の約束</h1>
-        時がどれほど流れても、<br>
-        私たちの想いは変わりません。<br><br>
-        それは静かな夜空の星のように、<br>
-        いつまでも輝き続けます。
+<div class="book">
+
+  <!-- Page 1 -->
+  <div class="page" onclick="nextPage()">
+    <h1>永遠の約束</h1>
+
+    <div class="jp">
+      時がどれほど流れても、想いは消えません。
+    </div>
+    <div class="id">
+      Walau waktu terus berlalu, perasaan ini tidak akan hilang.
+    </div>
+
+    <div class="jp">
+      夜空の星のように、静かに輝き続けます。
+    </div>
+    <div class="id">
+      Seperti bintang di langit malam, ia akan terus bersinar dengan terang.
+    </div>
   </div>
-</section>
 
-<!-- slide 2 -->
-<section class="slide">
-  <div class="letter">
-     <h1>永遠の約束</h1>
-        時がどれほど流れても、<br>
-        私たちの想いは変わりません。<br><br>
-        それは静かな夜空の星のように、<br>
-        いつまでも輝き続けます。
+  <!-- Page 2 -->
+  <div class="page" onclick="nextPage()">
+    <div class="jp">
+      長い旅の果てに、私たちは大切な存在を見つけました。
+    </div>
+    <div class="id">
+      Di akhir perjalanan panjang, kami menemukan seseorang yang paling berharga.
+    </div>
+
+    <div class="jp">
+      夜空の星のように、静かに輝き続けます。
+    </div>
+    <div class="id">
+      Mohon doakan dan saksikan awal cerita baru kami.
+    </div>
   </div>
-</section>
 
-<!-- slide 3 -->
-<section class="slide">
-  <div class="letter">
-     Himmel & Frieren<br><br>
-        日付: [Tanggal]<br>
-        時間: [Waktu]<br>
-        場所: [Lokasi]
+<!-- Page 3 -->
+  <div class="page" onclick="nextPage()">
+    <div class="jp">
+      【ヒンメル】 & 【フリーレン】
+    </div>
+    <div class="id">
+      Himmel & Frieren
+    </div>
 
-        <div class="signature">
-          心よりお待ちしております
-        </div>
+    <div class="jp">
+      日付: 【Tanggal】<br>
+      時間: 【Waktu】<br>
+      場所: 【Lokasi】
+    </div>
+    <div class="id">
+      Tanggal, waktu, dan lokasi acara pernikahan kami.
+    </div>
+
+    <div class="signature">
+      心よりお待ちしております<br>
+      <span class="id">Kami menantikan kehadiran Anda dengan tulus.</span>
+    </div>
   </div>
-</section>
+</div>
 
+<script>
+let pages = document.querySelectionAll(".page");
+let current = 0;
+
+function nextPage(){
+  if(current < pages.length){
+    pages[current].classList.add("flipped");
+    current++;
+  }
+}
+</script> 
+  
 </body>
 </html>
